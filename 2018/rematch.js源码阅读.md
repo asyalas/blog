@@ -1,7 +1,10 @@
 ## 介绍
 众所周知，redux是react全家桶最佳实践必不可少的一环，但是其模版代码过多，完成一个状态的闭环需要跨多个文件，再加上异步处理方案（如redux-saga）后，模版代码就更多了，开发起来特别痛苦，业内比较有名的解决方案是dva，基于redux-saga做异步处理，且尽量的减少了模版代码。
+
 rematch是一个新的redux Framework[《重新思考redux》](https://hackernoon.com/redesigning-redux-b2baee8b8a38),[中文翻译版](https://segmentfault.com/a/1190000014843214).
+
 下面是官方对rematch的介绍：
+
 Rematch是没有boilerplate的Redux最佳实践。没有多余的action types，action creators，switch 语句或者thunks。
 
 ## 基本用法
