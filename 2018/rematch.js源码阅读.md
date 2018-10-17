@@ -290,7 +290,9 @@ const effectsPlugin: R.Plugin = {
 
 export default effectsPlugin
 ```
-### index.ts
+
+### 主流程
+#### index.ts
 
 ```js
 
@@ -312,7 +314,7 @@ export default {
 }
 
 ```
-### pluginFactory.ts
+#### pluginFactory.ts
 
 ```js
 export default (config: R.Config) => ({
@@ -350,7 +352,7 @@ export default (config: R.Config) => ({
 })
 
 ```
-### rematch.ts
+#### rematch.ts
 
 ```js
   // 默认的两个插件
@@ -442,7 +444,7 @@ export default (config: R.Config) => ({
   }
 ```
 
-### redux.ts
+#### redux.ts
 
 ```js
 
