@@ -76,23 +76,23 @@ Vue和React的diff算法上：
 ![avatar](https://user-gold-cdn.xitu.io/2018/9/6/165ad7307ebbf0e7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 - react
- - first Render : getDefaultProps -> getInitialState -> componentWillMount -> render -> componenntDidMount
- - state change : shouldComponentUpdate -> componentWillUpdate -> render ->componentDidUpdate
- - props change : componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render ->componentDidUpdate
- - Unmount      : componentWillUnmount
- - second Render: getInitialState -> componentWillMount -> render -> componenntDidMount
+  - first Render : getDefaultProps -> getInitialState -> componentWillMount -> render -> componenntDidMount
+  - state change : shouldComponentUpdate -> componentWillUpdate -> render ->componentDidUpdate
+  - props change : componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render ->componentDidUpdate
+  - Unmount      : componentWillUnmount
+  - second Render: getInitialState -> componentWillMount -> render -> componenntDidMount
 
 - Vue
- - first Render : beforeCreate -> data -> created -> beforeMount  -> mounted
- - data change  : beforeUpdate -> updated
- - Unmount      : beforeDestory -> destoryed
+  - first Render : beforeCreate -> data -> created -> beforeMount  -> mounted
+  - data change  : beforeUpdate -> updated
+  - Unmount      : beforeDestory -> destoryed
 
 ### setState vs 双向绑定
 
 - React
 
 1、在钩子函数里调用setState
-![avatar]('../../Img/react-setState.png')
+![avatar](../../Img/react-setState.png)
 
 2、setState是同步？异步？
 
@@ -123,7 +123,7 @@ vue官方文档示意图
  - Performance + Profiler观察react组件的性能（react16.5后开始支持）
  - dynamic router 
 
-  1、react-router v3 
+  - react-router v3 
 
     ```js
     export default (app, registerModel) => ({
@@ -144,7 +144,7 @@ vue官方文档示意图
     })
 
     ```
-  2、react-router v4 + react-loadable 
+  - react-router v4 + react-loadable 
 
     ```js
     loadable({
@@ -156,7 +156,7 @@ vue官方文档示意图
 - Vue
 
   得益于 Vue 的 响应式系统 和 虚拟 DOM 系统 ，Vue 在渲染组件的过程中能自动追踪数据的依赖，并精确知晓数据更新的时候哪个组件需要重新渲染，渲染之后也会经过虚拟 DOM diff 之后才会真正更新到 DOM 上，Vue 应用的开发者一般不需要做额外的优化工作。
-  
+
   - 扁平化vuex store树
   - 路由懒加载
     ```js
