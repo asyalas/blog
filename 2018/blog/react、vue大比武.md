@@ -117,13 +117,13 @@ vue官方文档示意图
 ### 性能优化
 - React
 在 React 应用中，当某个组件的状态发生变化时，它会以该组件为根，重新渲染整个组件子树。
- - PureComponent + immutable + shouldComponentUpdate
- - 列表组件的key
- - Performance + react-addons-perf观察react的性能（react16不再支持）
- - Performance + Profiler观察react组件的性能（react16.5后开始支持）
- - dynamic router 
+  - PureComponent + immutable + shouldComponentUpdate
+  - 列表组件的key
+  - Performance + react-addons-perf观察react的性能（react16不再支持）
+  - Performance + Profiler观察react组件的性能（react16.5后开始支持）
+  - dynamic router 
 
-  - react-router v3 
+    - react-router v3 
 
     ```js
     export default (app, registerModel) => ({
@@ -144,7 +144,7 @@ vue官方文档示意图
     })
 
     ```
-  - react-router v4 + react-loadable 
+    - react-router v4 + react-loadable 
 
     ```js
     loadable({
