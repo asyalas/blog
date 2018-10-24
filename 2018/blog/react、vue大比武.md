@@ -69,11 +69,11 @@ Vue和React的diff算法上：
 
  - Vue的生命周期
 
-![avatar](https://user-gold-cdn.xitu.io/2018/9/6/165ad6f55c319399?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![Vue的生命周期](https://user-gold-cdn.xitu.io/2018/9/6/165ad6f55c319399?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
  - React的生命周期
 
-![avatar](https://user-gold-cdn.xitu.io/2018/9/6/165ad7307ebbf0e7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![React的生命周期](https://user-gold-cdn.xitu.io/2018/9/6/165ad7307ebbf0e7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 - react
   - first Render : getDefaultProps -> getInitialState -> componentWillMount -> render -> componenntDidMount
@@ -92,7 +92,7 @@ Vue和React的diff算法上：
 - React
 
 1、在钩子函数里调用setState
-![avatar](../../Img/react-setState.png)
+![在钩子函数里调用setState](../../Img/react-setState.png)
 
 2、setState是同步？异步？
 
@@ -105,7 +105,7 @@ Vue和React的diff算法上：
 - Vue
 
 vue官方文档示意图
-![avatar](https://cn.vuejs.org/images/data.png)
+![vue双向绑定](https://cn.vuejs.org/images/data.png)
 
 大致可以分为3个阶段：
 
@@ -189,3 +189,15 @@ vue官方文档示意图
   |   状态管理    |  vuex mobx  | redux mobx rematch dva  |  
   |    路由      |  vue-router |       react-router      |   
   |  第三方库总数 |   18423      |   68149               |   
+
+### mixin vs HOC
+![mixin vs HOC](https://camo.githubusercontent.com/e9e46e37196462badbf6784aef92a8700bf24e06/687474703a2f2f6f786a71666166656b2e626b742e636c6f7564646e2e636f6d2f626c6f672f3137313130332f4a6365364168366266662e6a70673f696d616765736c696d)
+1、mixin
+  - 官方定义：mixins是一种分发 Vue 组件中可复用功能的非常灵活的方式。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项。
+  - 数据对象在内部会进行浅合并 (一层属性深度)，在和组件的数据发生冲突时以组件数据优先
+  - 破坏了原有组件的封装性、可能造成命名冲突
+2、HOC
+  - 官方定义：a higher-order component is a function that takes a component and returns a new component.
+  - 注入新的props
+  - 包裹组件
+  - 反向继承 + 劫持渲染
