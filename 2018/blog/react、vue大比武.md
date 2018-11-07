@@ -49,6 +49,8 @@ Vue的diff算法大致和React的差不多，或者说是业界公认的虚拟do
   - 只对新旧树上同一层级的节点进行比较
   - 删除新树不存在，旧树存在的节点
   - 创建旧树不存在，新树存在的节点
+
+
 不同点：
 
 - old子节点和new子节点各有两个头尾的变量StartIdx和EndIdx，它们的2个变量相互比较，一共有4种比较方式（start->start,start->end,end->start,end->end）。
@@ -64,6 +66,7 @@ Vue和React的diff算法上：
 - 在element diff上
   - React采用的是基于key的顺序优化，从左到右依次比对，oldIndex < lastIndex ？ 移动 ： 不移动。
   - Vue采用的是首尾对比。位置都以新节点下标为准
+  - React的组件diff会由shouldComponentUpdate来决定，默认为true，有优化的空间，Vue监听的粒度更小，几乎不需要手动的优化
 
 ### 2、生命周期
 
