@@ -72,7 +72,7 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
 
     第四次挥手：A收到B发送的FIN报文段，Ack设置为Y第三次挥手中的Seq值+1，Seq设置为X+1第三次挥手中的Ack值。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
 
-  ![TCP四次挥手](../../Img/tcp-2.jpeg)
+  ![TCP四次挥手](../../Img/tcp-2.png)
 
   - HTTPS（http+ssl）的非对称加密和对称加密
 
@@ -193,7 +193,7 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
     - 拆分页面资源，首屏数据优先加载等。
 
     动态路由、懒加载
-    
+
 10. 浏览器发送获取嵌入在HTML中的静态资源
 11. 浏览器发送异步（AJAX）请求
 
