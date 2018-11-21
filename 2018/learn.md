@@ -29,6 +29,7 @@
 ## 5、框架与类库
 - React
 - Vue
+  - [ vue3.0新特性预览.md ](./2018/blog/vue3.0新特性预览.md )
 - Redux
 - Mobx
 - RxJs
@@ -42,4 +43,4 @@
 - WebAssembly
 
 ## 7、杂文
-[在线压缩图片的网站](https://squoosh.app/)
+- [在线压缩图片的网站](https://squoosh.app/)
