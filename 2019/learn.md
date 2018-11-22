@@ -17,6 +17,7 @@
 - 加载性能
 - 运行时性能
 - 前端缓存
+  - [浅谈浏览器的缓存机制](https://github.com/asyalas/blog/blob/master/2018/blog/%E6%B5%85%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md)
 - 性能调试与实践
 - 性能指标
 
@@ -29,7 +30,10 @@
 
 ## 5、框架与类库
 - React
+  - [React 官方发布性能分析插件Profiler](https://mp.weixin.qq.com/s?__biz=MzU0Nzk1MTg5OA==&mid=2247483677&idx=1&sn=ee0367c03284c27087fdd5cce694c0b4&chksm=fb47c568cc304c7e4505e720e1e3e315d245e7abc6633dd8d36ecd6be2727eb6f21cf34a7067&mpshare=1&scene=1&srcid=0919j3XsxPzQljesGnLd39FN&rd2werd=1#wechat_)
+  - [30分钟精通React Hooks](https://juejin.im/post/5be3ea136fb9a049f9121014)
 - Vue
+  - [Vue3.0新特性预览](https://juejin.im/post/5bf52f5af265da616b1055b7)
 - Redux
 - Mobx
 - RxJs
@@ -38,6 +42,7 @@
 ## 6、新技术/方向
 
 - PWA
+  - [PWA从入门到放弃](https://github.com/asyalas/blog/blob/master/2018/blog/PWA%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83.md)
 - CSS Houdini
 - HTTP/2
 - WebAssembly

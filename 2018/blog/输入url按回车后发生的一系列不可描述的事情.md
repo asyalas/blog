@@ -196,4 +196,16 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
 
 10. 浏览器发送获取嵌入在HTML中的静态资源
 11. 浏览器发送异步（AJAX）请求
+  fetch相对于ajax的优缺点
+  - 优点
+    - 内置promise，链式调用，也可以使用async await来解决回调地狱
+    - res提供了多种转换格式的方法，json(),blob()
+  - 缺点
+    - 默认不带cookie，带cookie需要指定credentials = include
+    - 需要底层支持，或者使用第三方兼容包
+    - 不能做超时处理，没有abort方法
+    - 遇到常见的错误码不会报错，需要手动去封装
+
+
+
 
