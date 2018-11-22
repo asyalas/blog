@@ -6,6 +6,8 @@
 - JS
 - css
   - [CSS3 - 混合模式 background-blend-mode](https://juejin.im/post/5b13b9d66fb9a01e80784413)
+- 浏览器
+  - [浏览器同源策略与ajax跨域方法汇总](https://www.jianshu.com/p/438183ddcea8)
 - 浏览器原理
 ## 2、工程化与工具
 - webpack
