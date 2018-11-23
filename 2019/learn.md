@@ -48,6 +48,8 @@
 - CSS Houdini
 - HTTP/2
 - WebAssembly
+- htm
+  - [HTM - JSX 的替代品？还是另一种选择？](https://juejin.im/post/5bf61169f265da614e2bb7ae)
 
 ## 7、杂文
 [在线压缩图片的网站](https://squoosh.app/)
