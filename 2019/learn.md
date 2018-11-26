@@ -36,6 +36,7 @@
   - [30分钟精通React Hooks](https://juejin.im/post/5be3ea136fb9a049f9121014)
 - Vue
   - [Vue3.0新特性预览](https://juejin.im/post/5bf52f5af265da616b1055b7)
+  - [Vue Conf 尤雨溪分享Vue3.0进展](https://mp.weixin.qq.com/s/W36opjFlnXMD0JJUSQbSlg)
 - Redux
 - Mobx
 - RxJs

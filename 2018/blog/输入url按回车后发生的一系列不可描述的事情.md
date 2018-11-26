@@ -3,9 +3,9 @@
 最近在研究如何优化首屏白屏时间，大致分为网络部分和js渲染部分，该文章主要是梳理一下从输入url开始，从客户端到服务端会发生哪些事情，从哪些地方可以做优化。
 
 ## 浏览器输入url后发生的过程
-1. 输入一个url地址
+1、输入一个url地址
 
-url遵守一定的语法规则：scheme://host.domain:port/path/filename
+  url遵守一定的语法规则：scheme://host.domain:port/path/filename
 
   - scheme：定义因特网服务的类型（协议），常见的有http，https，file，ftp等
   - host：定义域主机（http一般默认的是www）
@@ -13,11 +13,11 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
   - post：端口号（http一般是80，https一般是443）
 
 
-2. 浏览器会先查看浏览器缓存--系统缓存--路由缓存，如有存在缓存，就直接显示。如果没有，接着第三步
+2、浏览器会先查看浏览器缓存--系统缓存--路由缓存，如有存在缓存，就直接显示。如果没有，接着第三步
 
-3. 浏览器查找域名的ip地址(DNS,域名和ip的映射分布式数据库)
+3、浏览器查找域名的ip地址(DNS,域名和ip的映射分布式数据库)
 
-大致可以分为几部：
+  大致可以分为几部：
 
   - 浏览器缓存 
 
@@ -46,31 +46,31 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
   针对DNS的优化大致方向是减少DNS解析的时间，即尽量通过浏览器对dns的缓存机制来减少对ip的查询，即减少需要解析的域名的个数
 
 
-4. 浏览器给web服务器发送一个HTTP（HTTPS）请求
+4、浏览器给web服务器发送一个HTTP（HTTPS）请求
 
   - TCP三次握手
 
-  浏览器获得 IP 地址后，就会对目标服务器发起建立 TCP 连接的请求，建立连接主要有三个步骤，一般称为客户端与服务器端的三次握手：
+    浏览器获得 IP 地址后，就会对目标服务器发起建立 TCP 连接的请求，建立连接主要有三个步骤，一般称为客户端与服务器端的三次握手：
 
-  第一次握手： 建立连接时，客户端发送syn包（syn=j）到服务器，并进入SYN_SENT状态，等待服务器确认； 
+    第一次握手： 建立连接时，客户端发送syn包（syn=j）到服务器，并进入SYN_SENT状态，等待服务器确认； 
 
-  第二次握手： 服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；
+    第二次握手： 服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；
 
-  第三次握手： 客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。
+    第三次握手： 客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。
   
   ![TCP三次握手](../../Img/tcp-1.png)
 
   - TCP四次挥手
 
-  客户端或服务器均可主动发起挥手动作
+    客户端或服务器均可主动发起挥手动作
 
-  第一次挥手: 主动关闭方，将FIN置为1，Seq设置为Z为上一次对方传送过来的Ack值，Ack设置为X为Seq值+1。设置好以上值后，将数据发送至被动关闭方(这里标记为：B)。然后A进入FIN_WAIT_1状态。
+    第一次挥手: 主动关闭方，将FIN置为1，Seq设置为Z为上一次对方传送过来的Ack值，Ack设置为X为Seq值+1。设置好以上值后，将数据发送至被动关闭方(这里标记为：B)。然后A进入FIN_WAIT_1状态。
 
-  第二次挥手：B收到了A发送的FIN报文段，向A回复，Ack设置为第一次挥手中的Seq值+1，Seq设置为Y第一次挥手中的Ack值。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态。
+    第二次挥手：B收到了A发送的FIN报文段，向A回复，Ack设置为第一次挥手中的Seq值+1，Seq设置为Y第一次挥手中的Ack值。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态。
 
-  第三次挥手：B再次向A发送报文，将FIN置为1，Ack设置为X+1第二次挥手中的Ack值，Seq设置为Y第二次挥手中的Seq值。然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态。
+    第三次挥手：B再次向A发送报文，将FIN置为1，Ack设置为X+1第二次挥手中的Ack值，Seq设置为Y第二次挥手中的Seq值。然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态。
 
-  第四次挥手：A收到B发送的FIN报文段，Ack设置为Y第三次挥手中的Seq值+1，Seq设置为X+1第三次挥手中的Ack值。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
+    第四次挥手：A收到B发送的FIN报文段，Ack设置为Y第三次挥手中的Seq值+1，Seq设置为X+1第三次挥手中的Ack值。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
 
   ![TCP四次挥手](../../Img/tcp-2.png)
 
@@ -83,6 +83,7 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
       证书包含公钥，所以拿到证书意味着就拿到了对方的公钥
 
     - 对称加密
+
       约定加密密钥，请求的数据用密钥加密，服务器用密钥解密
       
     一次完整的https请求：
@@ -106,11 +107,11 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
   - 请求头自带的与tcp相关的属性
     - Connection
 
-    Connection 头（header） 决定当前的事务完成后，是否会关闭网络连接。如果该值是“keep-alive”，网络连接就是持久的，不会关闭，使得对同一个服务器的请求可以继续在该连接上完成。
+      Connection 头（header） 决定当前的事务完成后，是否会关闭网络连接。如果该值是“keep-alive”，网络连接就是持久的，不会关闭，使得对同一个服务器的请求可以继续在该连接上完成。
 
-    在http1.0的时候Connection的值默认为close
+      在http1.0的时候Connection的值默认为close
 
-    在http1.1的时候Connection的值默认为Keep-Alive
+      在http1.1的时候Connection的值默认为Keep-Alive
 
   - 浏览器会自发做的事
 
@@ -123,15 +124,18 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
   - 在头部设置Accept-Encoding类型，通过返回gzip来减少数据体积
   - 通过设置http缓存来优化性能，[请移步](https://github.com/asyalas/blog/blob/master/2018/blog/%E6%B5%85%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md)
 
-5. 永久重定向响应
+5、永久重定向响应
 
-为了优化搜索引擎，把多个域名进行归类，如把baidu.com,www.baidu.com,https://www.baidu.com归类
-返回301，通知浏览器跳转
+  为了优化搜索引擎，把多个域名进行归类，如把baidu.com,www.baidu.com,https://www.baidu.com归类
+  返回301，通知浏览器跳转,有利于SEO
 
-6. 浏览器跟踪重定向地址，请求头不变
-7. 服务器“处理”请求
-8. 服务器发回一个HTML响应
-9. 浏览器开始显示HTML
+6、浏览器跟踪重定向地址，请求头不变
+
+7、服务器“处理”请求
+
+8、服务器发回一个HTML响应
+
+9、浏览器开始显示HTML
   - 处理HTML标记，构建DOM树。
   - 处理CSS标记，构建CSSOM树。
   - 将DOM树和CSSOM树融合成渲染树（会忽略不需要渲染的dom）。
@@ -153,28 +157,33 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
 
     - 重排（回流）
 
-    会重新计算布局，通常由元素的结构、增删、位置、尺寸变化引起，如：img下载成功后，替换填充页面img元素，引起尺寸变化；也会由js的属性值读取引起，如读取offset、scroll、cilent、getComputedStyle等信息。
+      会重新计算布局，通常由元素的结构、增删、位置、尺寸变化引起，如：img下载成功后，替换填充页面img元素，引起尺寸变化；也会由js的属性值读取引起，如读取offset、scroll、cilent、getComputedStyle等信息。
 
     - 重绘
     
-    简单外观的改变会引起重绘，如颜色变化等。
+      简单外观的改变会引起重绘，如颜色变化等。
 
     - 重排一定重绘。
+
   优化：
+
   - dom
     - 简化dom结构，减少DOM树和渲染树构建成本，减少页面元素个数
     
-    如使用列表表格数据分页，简单表格不要使用复杂第三方组件等方式。
+      如使用列表表格数据分页，简单表格不要使用复杂第三方组件等方式。
   - js
     - 将js脚本标签放在页面body底部，减少对其他过程的阻塞。
 
       延迟执行：对不修改页面的外链script使用defer属性，使脚本并行下载不阻塞，下载后不立刻执行，而在所有元素解析之后执行。
+
       这里简单的介绍下defer和async的区别：
+
       相同点：
       - 加载文件时不阻塞页面渲染
       - 对于inline的script（内联脚本）无效
       - 使用这两个属性的脚本中不能调用document.write方法
       - 有脚本的onload的事件回调
+
       不同点：
       - html的版本html4.0中定义了defer；html5.0中定义了async
       - 每一个async属性的脚本都在它下载结束之后立刻执行，可能会打乱原有的顺序
@@ -189,14 +198,16 @@ url遵守一定的语法规则：scheme://host.domain:port/path/filename
   - 文件数量
     - 减少首次下载的文件数量大小.
     
-    使用图片懒加载，js的按需加载等方式，使用storage存储进行js、css文件的缓存(PWA)。
+      使用图片懒加载，js的按需加载等方式，使用storage存储进行js、css文件的缓存(PWA)。
     - 拆分页面资源，首屏数据优先加载等。
 
-    动态路由、懒加载
+      动态路由、懒加载
 
-10. 浏览器发送获取嵌入在HTML中的静态资源
-11. 浏览器发送异步（AJAX）请求
-  fetch相对于ajax的优缺点
+10、浏览器发送获取嵌入在HTML中的静态资源
+11、浏览器发送异步（AJAX）请求
+
+  简单的介绍下fetch相对于ajax的优缺点
+  
   - 优点
     - 内置promise，链式调用，也可以使用async await来解决回调地狱
     - res提供了多种转换格式的方法，json(),blob()
