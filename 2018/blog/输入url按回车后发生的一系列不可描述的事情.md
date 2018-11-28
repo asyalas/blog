@@ -72,9 +72,9 @@
 
     第二次挥手：B收到了A发送的FIN报文段，向A回复，Ack设置为第一次挥手中的Seq值+1，Seq设置为Y第一次挥手中的Ack值。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态。
 
-    第三次挥手：B再次向A发送报文，将FIN置为1，Ack设置为X+1第二次挥手中的Ack值，Seq设置为Y第二次挥手中的Seq值。然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态。
+    第三次挥手：B再次向A发送报文，将FIN置为1，Ack设置为X，Seq设置为Y。然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态。
 
-    第四次挥手：A收到B发送的FIN报文段，Ack设置为Y第三次挥手中的Seq值+1，Seq设置为X+1第三次挥手中的Ack值。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
+    第四次挥手：A收到B发送的FIN报文段，Ack设置为Y，Seq设置为X。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
 
   ![TCP四次挥手](../../Img/tcp-2.png)
 
