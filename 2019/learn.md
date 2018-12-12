@@ -6,6 +6,8 @@
 - JS
 - css
   - [CSS3 - 混合模式 background-blend-mode](https://juejin.im/post/5b13b9d66fb9a01e80784413)
+  - [杀了个回马枪，还是说说position:sticky吧](https://www.zhangxinxu.com/wordpress/2018/12/css-position-sticky/)
+  - [CSS scroll-behavior和JS scrollIntoView让页面滚动平滑](https://www.zhangxinxu.com/wordpress/2018/10/scroll-behavior-scrollintoview-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8/)
 - 浏览器
   - [浏览器同源策略与ajax跨域方法汇总](https://www.jianshu.com/p/438183ddcea8)
 - 浏览器原理
