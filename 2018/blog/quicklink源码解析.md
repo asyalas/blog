@@ -76,9 +76,13 @@ options.timeoutFn(() => {
   那么预加载会做写什么呢？
 
   首先它会从`toPrefetch`删除这个即将请求的url
+
   然后通过`preFetched`判断是否已经加载过了，来减少不必要的请求。
+  
   然后它会判断当前是否为2g或者省流量模式，如果是，则不做任何操作。
+
   接着会判断请求类型，默认是rel = prefetch，为true的时候，将会用fetch去请求数据，并对fetch做兼容。
+  
   最后，更新`preFetched`这个对象
 
 ```js
