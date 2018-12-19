@@ -126,3 +126,6 @@ const observer = new IntersectionObserver(entries => {
 - [使用交叉点观察器延迟加载图像以提高性能](https://juejin.im/post/5abe4c0ef265da239c7b7a2b)
 - [你应该知道的requestIdleCallback](https://juejin.im/post/5ad71f39f265da239f07e862)
 
+### 参考
+
+- [quicklink 为你的页面实现秒开](https://juejin.im/post/5c127d396fb9a049bc4c88bd)
