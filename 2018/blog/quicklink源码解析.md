@@ -46,12 +46,12 @@ quicklink 接受带有以下参数的 option 对象（可选）：
 ```
 2. 设置requestIdleCallback的callback和浏览器调用callback的最后期限
 
-  这里回调函数提供了两种策略：
-  - 如果参数中有urls，则只将urls所有的链接进行预加载，不会对dom下的其他链接进行预加载
-  - 如果参数中没有urls，根据options的el来遍历其下的所有a标签，通过Intersection Observer来监控
+   这里回调函数提供了两种策略：
+   - 如果参数中有urls，则只将urls所有的链接进行预加载，不会对dom下的其他链接进行预加载
+   - 如果参数中没有urls，根据options的el来遍历其下的所有a标签，通过Intersection Observer来监控
 
-  如果符合options.origins规则,且不符合options.ignores规则，将其放入预加载的列表`toPrefetch`中，
-  可以通过不传options.origins来匹配所有
+   如果符合options.origins规则,且不符合options.ignores规则，将其放入预加载的列表`toPrefetch`中，
+   可以通过不传options.origins来匹配所有
   
 ```js
 const toPrefetch = new Set();
@@ -73,17 +73,17 @@ options.timeoutFn(() => {
 
 3. 预加载
 
-  那么预加载会做写什么呢？
+   那么预加载会做些什么呢？
 
-  首先它会从`toPrefetch`删除这个即将请求的url
+   首先它会从`toPrefetch`删除这个即将请求的url
 
-  然后通过`preFetched`判断是否已经加载过了，来减少不必要的请求。
+   然后通过`preFetched`判断是否已经加载过了，来减少不必要的请求。
   
-  然后它会判断当前是否为2g或者省流量模式，如果是，则不做任何操作。
+   然后它会判断当前是否为2g或者省流量模式，如果是，则不做任何操作。
 
-  接着会判断请求类型，默认是rel = prefetch，为true的时候，将会用fetch去请求数据，并对fetch做兼容。
+   接着会判断请求类型，默认是rel = prefetch，为true的时候，将会用fetch去请求数据，并对fetch做兼容。
   
-  最后，更新`preFetched`这个对象
+   最后，更新`preFetched`这个对象
 
 ```js
 // index.mjs
@@ -109,7 +109,7 @@ function prefetch(url, isPriority, conn) {
 ```
 4. Intersection Observer
 
-  通过新建一个观察者，来观察放入观察的a标签，当a标签进入窗口的时候，则开始预加载这个链接
+   通过新建一个观察者，来观察放入观察的a标签，当a标签进入窗口的时候，则开始预加载这个链接
 
 ```js
 
