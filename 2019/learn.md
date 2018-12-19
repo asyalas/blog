@@ -19,6 +19,7 @@
 
 ## 3、性能优化
 - 加载性能
+  - [quicklink 为你的页面实现秒开](https://juejin.im/post/5c127d396fb9a049bc4c88bd)
 - 运行时性能
 - 前端缓存
   - [浅谈浏览器的缓存机制](https://github.com/asyalas/blog/blob/master/2018/blog/%E6%B5%85%E8%B0%88%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md)

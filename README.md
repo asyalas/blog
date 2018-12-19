@@ -6,6 +6,7 @@
 - [ js-cookie源码阅读 ](./2018/blog/js-cookie源码阅读.md)
 - [ rematch.js源码阅读 ](./2018/blog/rematch.js源码阅读.md)
 - [ PWA从入门到放弃 ](./2018/blog/PWA从入门到放弃.md)
+- [ quicklink源码解析 ](./2018/blog/quicklink源码解析.md)
 
 ## 杂记
 
