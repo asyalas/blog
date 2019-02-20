@@ -1,0 +1,46 @@
+### 目录
+- 性能优化指数
+  - window.performance的使用
+  - network
+  - dev-tool的performance
+  - 性能检查插件（lighthouse，speedpages）
+  - 浏览器的并发下载数
+- 图片的性能优化
+  - 图片过多为什么会导致白屏。 
+  - 为什么图片要用cdn部署 
+  - 图片怎么用懒加载及懒加载的几种方式 
+  - jpg，png，jpeg，svg，webp的使用场景
+  - 雪碧图和svg雪碧图的意义
+- 资源的性能优化
+  - prefetch、preload、preconnect、dns-prefetch、prerender、async、defer的使用场景
+  - 为什么css下载要在head里面，而js下载要放在body最后
+  - quicklink的使用
+- http缓存
+  - 强缓存
+  - 协商缓存
+- 浏览器缓存
+  - cookie
+  - localstorage
+  - sessionStorage
+  - cache
+  - indexDB
+- PWA
+  - 何为PWA
+  - PWA的缓存策略
+  - PWA的条件
+  - workbox
+  - 百度lavas
+- cdn
+  - 何为cdn，及使用场景
+  - 如何更新cdn的缓存
+- http2
+- 浏览器的性能api
+  - requestAnimationFrame
+  - requestIdleCallback
+  - window.performance
+- 框架的性能优化
+  - 路由和bundle的按需加载
+  - 骨架屏
+  - 组件渲染速度的监控
+  - timing-slice
+  - 服务端渲染

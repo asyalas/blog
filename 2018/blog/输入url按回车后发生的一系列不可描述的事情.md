@@ -56,11 +56,11 @@
 
     浏览器获得 IP 地址后，就会对目标服务器发起建立 TCP 连接的请求，建立连接主要有三个步骤，一般称为客户端与服务器端的三次握手：
 
-    第一次握手： 建立连接时，客户端发送syn包（syn=j）到服务器，并进入SYN_SENT状态，等待服务器确认； 
+    第一次握手： 建立连接时，客户端发送SYN包（SYN=j）到服务器，并进入SYN_SENT状态，等待服务器确认； 
 
-    第二次握手： 服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；
+    第二次握手： 服务器收到SYN包，必须确认客户的SYN（ACK=j+1），同时自己也发送一个SYN包（SYN=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；
 
-    第三次握手： 客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。
+    第三次握手： 客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ACK=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。
   
   ![TCP三次握手](../../Img/tcp-1.png)
 
@@ -68,13 +68,13 @@
 
     客户端或服务器均可主动发起挥手动作
 
-    第一次挥手: 主动关闭方，将FIN置为1，Seq设置为Z为上一次对方传送过来的Ack值，Ack设置为X为Seq值+1。设置好以上值后，将数据发送至被动关闭方(这里标记为：B)。然后A进入FIN_WAIT_1状态。
+    第一次挥手: 主动关闭方，将FIN置为1,设置好以上值后，将数据发送至被动关闭方(这里标记为：B)。然后A进入FIN_WAIT_1状态。
 
-    第二次挥手：B收到了A发送的FIN报文段，向A回复，Ack设置为第一次挥手中的Seq值+1，Seq设置为Y第一次挥手中的Ack值。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态。
+    第二次挥手：B收到了A发送的FIN报文段，向A回复ACK，然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态。
 
-    第三次挥手：B再次向A发送报文，将FIN置为1，Ack设置为X，Seq设置为Y。然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态。
+    第三次挥手：B再次向A发送报文，将FIN置为2。然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态。
 
-    第四次挥手：A收到B发送的FIN报文段，Ack设置为Y，Seq设置为X。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
+    第四次挥手：A收到B发送的FIN报文段，发送Ack。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态，A在发送完报文等待了2MSL时间后进入CLOSED状态。
 
   ![TCP四次挥手](../../Img/tcp-2.png)
 
