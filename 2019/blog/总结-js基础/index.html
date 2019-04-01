@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head><style>
+  body{margin: 0;}
+  div{border: 1px solid #000;}
+  #grandfather1{width: 200px;height: 200px;}
+  #parent1{width: 100px;height: 100px;margin: 0 auto;}
+  #child1{width: 50px;height: 50px;margin: 0 auto;}
+</style>
+
+<!-- HTML 代码 -->
+<div id="grandfather1">
+  
+  <ul id="ul">
+      <li>222</li>
+      <li>333</li>
+      <li>444</li>
+      <li>555</li>
+      <li>666</li>
+      <li>777</li>
+
+  </ul>
+</div>
+
+<!-- JS 代码 -->
+<script>
+  const ul = document.querySelector('#ul');
+  ul.addEventListener('click', e => {
+  console.log('e.target:',e.target);
+  console.log('e.currentTarget',e.currentTarget);
+});
+ 
+</script>
+</html>

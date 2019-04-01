@@ -16,12 +16,20 @@
     - 柯里化
   - 响应式编程
 - 事件流
+  - 什么是事件流
+  - don事件级别
+    - dom事件级别以前的处理方法
+    - dom 0级
+    - dom 2级
+    - dom 3级
   - 事件捕获
   - 事件冒泡
   - dom事件流
-    - dom 0级
-    - dom 1级
-    - dom 2级
+  - 事件委托
+  - Event对象常用的方法和属性
+    - event. preventDefault()
+    - event.stopPropagation() & event.stopImmediatePropagation()
+    - event.target & event.currentTarget
 - 事件循环
   - 微任务
   - 宏任务
@@ -30,7 +38,6 @@
     - promise
     - generetor
     - async/awit
-- 事件委托
 - 设计模式
   - 工厂模式
   - 观察者模式
